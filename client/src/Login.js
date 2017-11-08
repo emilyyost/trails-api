@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import axios from 'axios';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 
 class Login extends Component {

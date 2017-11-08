@@ -13,17 +13,28 @@ class TrailsList extends Component {
         length: "",
         elevation: "",
         description: "",
-        challenge: ""
-      
+        challenge: "",
+        managers: []
     };
     this.handleChange = this.handleChange.bind(this);
     }
   componentWillMount() {
     axios.get('/api/trails')
       .then((response) => {
+        console.log(response)
         this.setState({
           trails: response.data
-        })
+        }) 
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      axios.get('/api/managers')
+      .then((response) => {
+        console.log(response)
+        this.setState({
+          managers: response.data
+        }) 
       })
       .catch((error) => {
         console.log(error);
@@ -51,7 +62,8 @@ class TrailsList extends Component {
       length: this.state.length, 
       elevation: this.state.elevation,
       description: this.state.description,
-      challenge: this.state.challenge
+      challenge: this.state.challenge,
+      managerId: this.state.manager
     }
     
     axios.post('/api/trails/', newTrail) 
@@ -63,6 +75,12 @@ class TrailsList extends Component {
   }
 
   render() {
+    console.log(this.state.managers);
+    const managerList = this.state.managers.map((manager)=>{
+      return (
+      <option value={manager.id}> {manager.organization} </option>
+      )
+    })
     const trailItems = this.state.trails.map((trail)=>{
       return <li key={trail.id}>
         <Link to={"/trails/" + trail.id}>{trail.name}</Link>&nbsp;
@@ -103,6 +121,13 @@ class TrailsList extends Component {
           <label>
             Challenge: 
             <input type="text" name="challenge" onChange={this.handleChange}/><br/>
+          </label>
+          <label>
+            Manager: 
+            <select name="manager" onChange={this.handleChange}>
+              {managerList}
+            </select>
+            <br/>
           </label>
           <input type="submit" value="Submit" />
         </form>

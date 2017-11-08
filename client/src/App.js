@@ -3,10 +3,10 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Link
+ // Link
 } from 'react-router-dom';
-import axios from 'axios';
-import logo from './logo.svg';
+//import axios from 'axios';
+//import logo from './logo.svg';
 import './App.css';
 import Login from './Login';
 import TrailsList from './TrailsList';

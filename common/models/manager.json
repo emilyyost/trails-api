@@ -1,0 +1,30 @@
+{
+  "name": "manager",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "organization": {
+      "type": "string",
+      "required": true
+    },
+    "employees": {
+      "type": "number"
+    },
+    "volunteers": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "maintains": {
+      "type": "hasMany",
+      "model": "trails",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

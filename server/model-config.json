@@ -38,5 +38,13 @@
   "trails": {
     "dataSource": "db",
     "public": true
+  },
+  "trails-challenge": {
+    "dataSource": "db",
+    "public": true
+  },
+  "manager": {
+    "dataSource": "db",
+    "public": true
   }
 }
